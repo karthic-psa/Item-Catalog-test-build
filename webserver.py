@@ -51,6 +51,8 @@ class webServerHandler(BaseHTTPRequestHandler):
                 for res in restaurants:
                     print res.name
                     output += "<h1> %s </h1>" % res.name
+                    output += "<div><a href = '/edit'>Edit</a></div>" 
+                    output += "<div><a href = '/delete'>Delete</a></div>"
                 output += "</body></html>"
                 self.wfile.write(output)
                 print output
