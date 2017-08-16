@@ -9,13 +9,13 @@ Base = declarative_base()
 class Restaurant(Base):
     __tablename__ = 'restaurant'
 
-    name = Column(String(90), nullable = False)
+    name = Column(String(90),nullable = False)
     rid = Column(Integer, primary_key = True)
 
 class MenuItem(Base):
     __tablename__ = 'menu_item'
 
-    name = Column(String(90), nullable = False)
+    name = Column(String(90),nullable = False)
     mid = Column(Integer, primary_key = True)
     course = Column(String(300))
     description = Column(String(300))
