@@ -1,8 +1,11 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import cgi
+# to import CRUD operations #
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
+
+# to create session and connect to DB #
 engine = create_engine('sqlite:///restaurantmenu.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind = engine)
@@ -43,14 +46,14 @@ class webServerHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
                 restaurants = session.query(Restaurant).all()
+                output = ""
+                output += "<html><body>"
                 for res in restaurants:
                     print res.name
-                    output = ""
-                    output += "<html><body>"
                     output += "<h1> %s </h1>" % res.name
-                    output += "</body></html>"
-                    self.wfile.write(output)
-                    print output
+                output += "</body></html>"
+                self.wfile.write(output)
+                print output
                 return
 
         except IOError:
