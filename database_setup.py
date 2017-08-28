@@ -19,7 +19,7 @@ class MenuItem(Base):
     mid = Column(Integer, primary_key = True)
     course = Column(String(300))
     description = Column(String(300))
-    pri ce = Column(String(10))
+    price = Column(String(10))
     restaurant_id = Column(Integer,ForeignKey('restaurant.rid'))
     restaurant = relationship(Restaurant)
 
@@ -31,7 +31,7 @@ class MenuItem(Base):
         return {
             'name': self.name,
             'description': self.description,
-            'id': self.id,
+            'id': self.mid,
             'price': self.price,
             'course': self.course,
         }
